@@ -2,7 +2,7 @@ class UrlsController < ApplicationController
   before_action :authorize
 
   def index
-    @urls = Url.all.paginate(:per_page => 10, :page => params[:page])
+    @urls = Url.all.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
   end
 
   def show
