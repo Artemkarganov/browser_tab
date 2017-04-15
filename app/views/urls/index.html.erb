@@ -1,0 +1,10 @@
+<h1>Your URLs:</h1>
+<%= link_to 'Add New URL', new_url_path %>
+<ul>
+  <% @urls.each do |p| %>
+    <li>
+      <%= p.url %>
+      <%= link_to '×', url_path(p), method: :delete, remote: true %>
+    </li>
+  <% end %>
+</ul>
