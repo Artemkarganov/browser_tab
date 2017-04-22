@@ -8,7 +8,7 @@
   </p>
 <% end %>
 <ul>
-  <% @urls.each do |p| %>
+  <% current_user.urls.each do |p| %>
     <li>
       <%= link_to image_tag(p.image), p.url %>
       <%= p.name %>

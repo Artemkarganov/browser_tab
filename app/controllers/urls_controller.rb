@@ -3,21 +3,27 @@ class UrlsController < ApplicationController
   before_action :authorize
 
   def index
-    @urls = Url.all.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
+    @urls = Url.all
+    if params[:search]
+      @urls = Url.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
+    else
+      @urls = Url.all.paginate(:per_page => 10, :page => params[:page])
+    end
+    #current_user.all.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
   end
 
   def show
-    unless @url = Url.find(params[:id])
+    unless @url = current_user.urls.find(params[:id])
       render text: "Page not found", status: "404"
     end
   end
 
   def new
-    @url = Url.new
+    @url = current_user.urls.new
   end
 
   def create
-    @url = Url.new(url_params)
+    @url = current_user.urls.new(url_params)
     respond_to do |format|
        if @url.save
          a = rand(36**11).to_s(36).upcase[0,6]
@@ -38,7 +44,7 @@ class UrlsController < ApplicationController
   end
 
   def destroy
-    @url = Url.find(params[:id])
+    @url = current_user.urls.find(params[:id])
     @url.destroy
     redirect_to action: 'index'
   end
@@ -48,4 +54,5 @@ class UrlsController < ApplicationController
   def url_params
     params.require(:url).permit(:url, :name)
   end
+  helper_method :urls
 end

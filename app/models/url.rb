@@ -21,5 +21,5 @@ class Url < ApplicationRecord
     image.save('output.png')
   end
 
-  #belongs_to :user
+  belongs_to :user
 end
