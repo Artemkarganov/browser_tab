@@ -20,6 +20,14 @@ class UrlsController < ApplicationController
     @url = Url.new(url_params)
     respond_to do |format|
        if @url.save
+         a = rand(36**11).to_s(36).upcase[0,6]
+         screenshot = Gastly.screenshot(@url.url, timeout: 1000)
+         image = screenshot.capture
+         image.resize(width: 110, height: 110)
+         image.format('jpg')
+         image.save(Rails.root + 'app/assets/images' + a)
+         @url.image = a
+         @url.save
          format.html { redirect_to @url, notice: 'Url was successfully created.' }
          format.json { render :show, status: :created, location: @url }
        else

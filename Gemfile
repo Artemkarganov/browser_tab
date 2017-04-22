@@ -57,3 +57,7 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'will_paginate'
+
+gem 'gastly'
+
+gem 'sprockets-rails', '2.3.3'

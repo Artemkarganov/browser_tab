@@ -10,7 +10,8 @@
 <ul>
   <% @urls.each do |p| %>
     <li>
-      <%= p.url %>
+      <%= link_to image_tag(p.image), p.url %>
+      <%= p.name %>
       <%= link_to '×', url_path(p), method: :delete, remote: true %>
     </li>
   <% end %>
