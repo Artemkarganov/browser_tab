@@ -11,5 +11,5 @@ class User < ApplicationRecord
     end
   end
 
-  #has_many :urls
+  has_many :urls
 end
