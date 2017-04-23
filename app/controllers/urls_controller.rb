@@ -9,7 +9,6 @@ class UrlsController < ApplicationController
     else
       @urls = Url.all.paginate(:per_page => 10, :page => params[:page])
     end
-    #current_user.all.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
   end
 
   def show

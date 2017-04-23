@@ -1,5 +1,6 @@
 <h1>Your URLs:</h1>
 <%= link_to 'Add New URL', new_url_path %>
+<%= link_to 'Your Friends', 'users#friends' %>
 
 <%= form_tag urls_path, :method => 'get', :id => "urls_search" do %>
   <p>
