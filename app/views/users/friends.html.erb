@@ -1,0 +1,9 @@
+<%= link_to 'Back', root_path  %>
+<br>
+
+<h3>Your Friends</h3>
+
+<% @friends.each do |friend| %>
+  <%= link_to friend.name, "/users/#{friend.id}"  %>
+  <br>
+<% end %>

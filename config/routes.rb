@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :urls
 
+  get '/users/:id' => 'users#index'
+  get '/users' => 'users#friends'
+
   match 'auth/:provider/callback', to: 'sessions#create', :via => [:post, :get]
   match 'auth/failure', to: redirect('/'), :via => [:post, :get]
   match 'signout', to: 'sessions#destroy', as: 'signout', :via => [:post, :get]

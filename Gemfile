@@ -61,3 +61,5 @@ gem 'will_paginate'
 gem 'gastly'
 
 gem 'sprockets-rails', '2.3.3'
+
+gem 'koala'
