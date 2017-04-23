@@ -1,6 +1,6 @@
 class UrlsController < ApplicationController
 
-  before_action :authorize
+  before_filter :authorize
 
   def index
     @urls = Url.all
